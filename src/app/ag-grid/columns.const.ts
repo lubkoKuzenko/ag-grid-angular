@@ -18,10 +18,12 @@ export const columns = [
     }
   }, {
     headerName: "Name",
-    field: "name"
+    field: "name",
+    sortingOrder: ["asc", "desc", null]
   }, {
     headerName: "Email",
-    field: "email"
+    field: "email",
+    sortingOrder: [ null ]    // disable sorting
   }, {
     headerName: "Phone",
     field: "phone"

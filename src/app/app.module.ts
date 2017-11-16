@@ -8,11 +8,14 @@ import { AgGridComponent } from './ag-grid/ag-grid.component';
 
 // HttpClient
 import { HttpClientModule } from '@angular/common/http';
+import { CountryDropdownComponent } from './country-dropdown/country-dropdown.component';
+import { CountryFilterService } from './services'
 
 @NgModule({
   declarations: [
     AppComponent,
-    AgGridComponent
+    AgGridComponent,
+    CountryDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AgGridModule.withComponents([])
   ],
-  providers: [],
+  providers: [CountryFilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

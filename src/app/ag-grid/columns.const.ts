@@ -1,4 +1,7 @@
 // https://www.ag-grid.com/javascript-grid-column-properties
+
+import { countryCellRenderer } from './custom-cell-renderer'
+
 export const columns = [
   {
     headerName: "Index",
@@ -30,6 +33,7 @@ export const columns = [
     field: "company.name"
   }, {
     headerName: "Country",
-    field: "address.country"
+    field: "address.country",
+    cellRenderer: countryCellRenderer
   }
 ];

@@ -11,15 +11,15 @@ import { columns } from './columns.const'
 })
 
 export class AgGridComponent {
-  private gridApi;
-  private gridColumnApi;
-  private columnDefs;               // Array of Column Definitions.
-  private rowBuffer;                // sets the number of rows the grid renders outside of the viewable area. The default is 10
+  public gridApi;
+  public gridColumnApi;
+  public columnDefs;               // Array of Column Definitions.
+  public rowBuffer;                // sets the number of rows the grid renders outside of the viewable area. The default is 10
   
   // Infinite Scrolling
-  private rowModelType;
-  private paginationPageSize;
-  private infiniteInitialRowCount;
+  public rowModelType;
+  public paginationPageSize;
+  public infiniteInitialRowCount;
 
   constructor(
     public gridDataService: GridDataService

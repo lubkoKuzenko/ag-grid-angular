@@ -1,0 +1,9 @@
+<input 
+  #quickSearch
+  type="text" 
+  class="p-0"
+  id="filter-text-box" 
+  class="form-control" 
+  placeholder="Quick search..."
+  [(ngModel)]="quickSearch.value"
+  (input)="onChange($event.target.value)" />

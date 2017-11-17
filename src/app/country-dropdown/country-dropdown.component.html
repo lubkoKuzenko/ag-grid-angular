@@ -1,3 +1,4 @@
+<label class="float-left text-white pr-2 mt-1">Country filter:</label>
 <select #selectElem class="form-control" (change)="onChange(selectElem.value === 'All' ? '' : selectElem.value)">
   <option [value]="">All</option>
   <option *ngFor="let option of options" [value]="option.name">

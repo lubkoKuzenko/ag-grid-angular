@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ColumnApi, GridApi, GridOptions } from "ag-grid/main";
-import { GridDataService, CountryFilterService } from '../services'
+import { Component, OnInit } from '@angular/core'
+import { ColumnApi, GridApi, GridOptions } from "ag-grid/main"
+import { GridDataService, CountryFilterService, QuickSearchService } from '../services'
 import { columns } from './columns.const'
 
 @Component({
@@ -11,11 +11,11 @@ import { columns } from './columns.const'
 })
 
 export class AgGridComponent {
-  public gridApi;
-  public gridColumnApi;
-  private gridOptions: GridOptions;
-  public columnDefs;               // Array of Column Definitions.
-  public rowBuffer;                // sets the number of rows the grid renders outside of the viewable area. The default is 10
+  public gridApi
+  public gridColumnApi
+  private gridOptions: GridOptions
+  public columnDefs               // Array of Column Definitions.
+  public rowBuffer                // sets the number of rows the grid renders outside of the viewable area. The default is 10
 
   // Infinite Scrolling
   // public rowModelType;
@@ -23,20 +23,24 @@ export class AgGridComponent {
   // public infiniteInitialRowCount;
 
   // sorting 
-  public sortingOrder;
+  public sortingOrder
 
   // external filter
-  public isExternalFilterPresent;
-  public doesExternalFilterPass;
+  public isExternalFilterPresent
+  public doesExternalFilterPass
+
+  // quick search
+  public isQuickFilterPresent
 
   // rowClassRules
   public rowClassRules;
 
-  public country;
-
+  public country: string;
+  
   constructor(
     public gridDataService: GridDataService,
-    public countryFilterService: CountryFilterService
+    public countryFilterService: CountryFilterService,
+    public quickSearchService: QuickSearchService
   ) {
     this.gridOptions = <GridOptions>{};
     this.columnDefs = columns;
@@ -52,14 +56,18 @@ export class AgGridComponent {
       }
     }
 
-    this.countryFilterService.selectedCountry$.subscribe(country => {
-      this.country = country;
-      this.onFilterChanged();
+    // quick filter
+    this.quickSearchService.selectedQuery$.subscribe(query => {
+      this.gridOptions.api.setQuickFilter(query)
     })
 
-    this.isExternalFilterPresent = () => {
-      return this.country;
-    }
+    // external filter
+    this.countryFilterService.selectedCountry$.subscribe(country => {
+      this.country = country;
+      if (this.isExternalFilterPresent) {
+        this.gridOptions.api.onFilterChanged();
+      }
+    })
 
     this.doesExternalFilterPass = (node) => {
       return this.country ? node.data.address.country === this.country : true;
@@ -89,11 +97,5 @@ export class AgGridComponent {
     });
 
     this.gridOptions.api.sizeColumnsToFit();
-  }
-
-  onFilterChanged() {
-    if (this.isExternalFilterPresent) {
-      this.gridOptions.api.onFilterChanged();
-    }
   }
 }

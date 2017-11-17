@@ -9,13 +9,15 @@ import { AgGridComponent } from './ag-grid/ag-grid.component';
 // HttpClient
 import { HttpClientModule } from '@angular/common/http';
 import { CountryDropdownComponent } from './country-dropdown/country-dropdown.component';
-import { CountryFilterService } from './services'
+import { CountryFilterService, QuickSearchService } from './services';
+import { QuickSearchComponent } from './quick-search/quick-search.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     AgGridComponent,
-    CountryDropdownComponent
+    CountryDropdownComponent,
+    QuickSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { CountryFilterService } from './services'
     HttpClientModule,
     AgGridModule.withComponents([])
   ],
-  providers: [CountryFilterService],
+  providers: [CountryFilterService, QuickSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

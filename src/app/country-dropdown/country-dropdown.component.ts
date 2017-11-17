@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { GridDataService } from '../services'
 import { countries } from '../ag-grid/countries.const'
 import { CountryFilterService } from '../services'
 
 @Component({
   selector: 'country-dropdown',
   templateUrl: './country-dropdown.component.html',
-  styleUrls: ['./country-dropdown.component.css'],
-  providers: [ GridDataService ]
+  styleUrls: ['./country-dropdown.component.css']
 })
 export class CountryDropdownComponent implements OnInit {
   options: any;
 
   constructor(
-    public gridDataService: GridDataService,
     public countryFilterService: CountryFilterService
   ) { }
 

@@ -111,7 +111,7 @@ export class AgGridComponent {
 
   onSelectionChanged(){
     var selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows)
+    console.log(" "+selectedRows)
     // var selectedRowsString = "";
     // selectedRows.forEach(function(selectedRow, index) {
     //   if (index !== 0) {

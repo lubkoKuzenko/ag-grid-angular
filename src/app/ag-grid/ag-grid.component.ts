@@ -36,6 +36,7 @@ export class AgGridComponent {
   public rowClassRules;
 
   public country: string;
+  public query: string;
   
   constructor(
     public gridDataService: GridDataService,
@@ -58,8 +59,13 @@ export class AgGridComponent {
 
     // quick filter
     this.quickSearchService.selectedQuery$.subscribe(query => {
-      this.gridOptions.api.setQuickFilter(query)
+      this.query = query;
+      this.gridOptions.api.setQuickFilter(this.query)
     })
+
+    this.isQuickFilterPresent = () => {
+      return this.query;
+    }
 
     // external filter
     this.countryFilterService.selectedCountry$.subscribe(country => {
@@ -68,6 +74,10 @@ export class AgGridComponent {
         this.gridOptions.api.onFilterChanged();
       }
     })
+
+    this.isExternalFilterPresent = () => {
+      return this.country;
+    }
 
     this.doesExternalFilterPass = (node) => {
       return this.country ? node.data.address.country === this.country : true;

@@ -5,23 +5,23 @@
   [gridOptions]="gridOptions"
   [columnDefs]="columnDefs"
   [rowBuffer]="rowBuffer"
-  
-  [debug]="false"
-  [rowHeight]="30"
-  [animateRows]="true"
   [enableColResize]="true"
-  [rowClassRules]="rowClassRules"
   
+  [animateRows]="true"
   [enableSorting]="true"
   [sortingOrder]="sortingOrder"
 
+  [rowClassRules]="rowClassRules"
+
   [enableFilter]="true"
 
-  [isExternalFilterPresent]="country"
+  [isExternalFilterPresent]="isExternalFilterPresent"
   [doesExternalFilterPass]="doesExternalFilterPass"
 
-  (isQuickFilterPresent)="query"
+  (isQuickFilterPresent)="isQuickFilterPresent"
 
+  [rowHeight]="30"
+  [debug]="false"
   (gridReady)="onGridReady($event)">
 </ag-grid-angular>
 

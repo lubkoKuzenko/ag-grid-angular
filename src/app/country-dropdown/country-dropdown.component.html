@@ -1,4 +1,5 @@
-<select #selectElem class="form-control" (change)="onChange(selectElem.value)">
+<select #selectElem class="form-control" (change)="onChange(selectElem.value === 'All' ? '' : selectElem.value)">
+  <option [value]="">All</option>
   <option *ngFor="let option of options" [value]="option.name">
       {{option.name}}
   </option>

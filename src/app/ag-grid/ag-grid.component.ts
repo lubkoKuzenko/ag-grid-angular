@@ -58,7 +58,7 @@ export class AgGridComponent {
     })
 
     this.isExternalFilterPresent = () => {
-      return true;
+      return this.country;
     }
 
     this.doesExternalFilterPass = (node) => {

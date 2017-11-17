@@ -11,7 +11,6 @@ import { CountryFilterService } from '../services'
 })
 export class CountryDropdownComponent implements OnInit {
   options: any;
-  country:string;
 
   constructor(
     public gridDataService: GridDataService,
@@ -22,7 +21,7 @@ export class CountryDropdownComponent implements OnInit {
     this.options = countries;
   }
 
-  onChange(country){
+  onChange(country: string){
     this.countryFilterService.changeCountry(country)
   }
 }

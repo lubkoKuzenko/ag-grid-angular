@@ -13,7 +13,7 @@ import { columns } from './columns.const'
 export class AgGridComponent {
   public gridApi
   public gridColumnApi
-  private gridOptions: GridOptions
+  public gridOptions: GridOptions
   public columnDefs               // Array of Column Definitions.
   public rowBuffer                // sets the number of rows the grid renders outside of the viewable area. The default is 10
 

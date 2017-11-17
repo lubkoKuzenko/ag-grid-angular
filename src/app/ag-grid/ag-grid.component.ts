@@ -108,4 +108,17 @@ export class AgGridComponent {
 
     this.gridOptions.api.sizeColumnsToFit();
   }
+
+  onSelectionChanged(){
+    var selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows)
+    // var selectedRowsString = "";
+    // selectedRows.forEach(function(selectedRow, index) {
+    //   if (index !== 0) {
+    //     selectedRowsString += ", ";
+    //   }
+    //   selectedRowsString += selectedRow.athlete;
+    // });
+    // document.querySelector("#selectedRows").innerHTML = selectedRowsString;
+  }
 }

@@ -20,6 +20,9 @@
 
   (isQuickFilterPresent)="isQuickFilterPresent"
 
+  [rowSelection]="'multiple'"
+  (selectionChanged)="onSelectionChanged($event)"
+
   [rowHeight]="30"
   [debug]="false"
   (gridReady)="onGridReady($event)">
